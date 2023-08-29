@@ -1,28 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary"> 
     <ion-title class="ion-text-center">
-      Contador de dias
+      Contador de días
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-item lines="full">
+    <ion-label position="floating" class="ion-text-center">Ingrese la cantidad de días a calcular: </ion-label>
+    <ion-input class="centered-input" type="number" [(ngModel)]="diasParaSumar" (ionInput)="resetFechaFuturaOnInput()"></ion-input>
+  </ion-item>
+  <br>
+  <br>
+  <br>
   <div class="custom-label-container">
-    <ion-label class="text-center custom-label-title">Fecha</ion-label>
-    <ion-datetime display-format="DD/MM/YYYY" presentation="date" preferWheel="false" [(ngModel)]="fechaActual"
+    <ion-label class="text-center custom-label-title">Desde que fecha: </ion-label>
+    <ion-datetime display-format="DD/MM/YYYY" presentation="date" preferWheel="true" [(ngModel)]="fechaActual"
       (ionchange)="resetFechaFuturaOnChange()">
     </ion-datetime>
   </div>
   <br>
-  <ion-item lines="full">
-    <ion-label position="floating" class="ion-text-center">Ingrese los dias</ion-label>
-    <ion-input class="centered-input" type="number" [(ngModel)]="diasParaSumar" (ionInput)="resetFechaFuturaOnInput()"></ion-input>
-  </ion-item>
-
+  <br>
+  <br>
   <div class="ion-padding-top center-button">
-    <ion-button shape="round" (click)="calcularFechaFutura()">Calcular Fecha</ion-button>
+    <ion-button shape="round" (click)="calcularFechaFutura()">Calcular</ion-button>
   </div>
-
   <div *ngIf="errorMessage" class="ion-text-center ion-padding-top">
     <span class="error-message">{{ errorMessage }}</span>
   </div>
