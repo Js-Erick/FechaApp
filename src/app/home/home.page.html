@@ -1,20 +1,25 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Contador de dias
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label>Fecha</ion-label>
+    <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="fechaActual"
+      (ionchange)="resetFechaFuturaOnChange()"></ion-datetime>
+  </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+  <ion-item>
+    <ion-label>Días a sumar</ion-label>
+    <ion-input type="number" [(ngModel)]="diasParaSumar" (ionInput)="resetFechaFuturaOnInput()"></ion-input>
+  </ion-item>
+
+  <ion-button (click)="calcularFechaFutura()">Calcular Fecha Futura</ion-button>
+
+  <p *ngIf="fechaFutura">La fecha en {{diasParaSumar}} días será: {{fechaFutura | date: 'dd/MM/yyyy'}}</p>
 </ion-content>
